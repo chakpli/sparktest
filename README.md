@@ -10,3 +10,10 @@
 - The top 10,000 customers will be determined by the total amount of money they have spent in the year 2016
 - We cannot reach out to a customer via an email address that is blacklisted. However, if a customer has multiple email addresses, and some are on the blacklist while others are not, we want to contact them via all their email addresses that aren't in the blacklist
 - Save the campaign in a file with following structure: CustomerId, Customer full name, email list, total transaction amount
+
+# instructions:
+- make sure data of customers, transactions, and blacklist located in dirs ./customers, ./transactions, and ./blacklist respectively
+- sbt clean; sbt package
+- spark-submit --class topcustomers.Driver --master local[4] ./target/scala-2.11/exam_2.11-0.0.1.jar, or
+  spark-submit --class topcustomers.Driver --master spark://localhost:7077 ./target/scala-2.11/exam_2.11-0.0.1.jar
+- result is generated at ./output.txt
